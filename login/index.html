@@ -25,10 +25,10 @@
 
     <!-- Custom styles for this template -->
     <link href="./../css/new-age.min.css" rel="stylesheet">
-
+    <link href="./../css/style.css" rel="stylesheet">
   </head>
 
-  <body id="page-top">
+  <body id="page-top" ng-app="login">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -50,14 +50,10 @@
 
     <header class="masthead">
       <div class="container h-100">
-        <div class="row h-100">
-
-          <div class="col-sm-12 my-auto text-center">
-            <h1 class="mb-2">Inicia sesión</h1>
-            <p>...Y pon orden a tus finanzas de una vez por todas</p>
-            <a href="./" class="btn btn-outline btn-xl js-scroll-trigger">Empieza ya!!</a>
+        <!-- Angular viewer -->
+        <div class="row h-100" >
+          <div class="col-sm-12 my-auto text-center" ng-view class="slide">
           </div>
-
         </div>
       </div>
     </header>
@@ -87,6 +83,14 @@
 
     <!-- Custom scripts for this template -->
     <script src="./../js/new-age.min.js"></script>
+
+    <!-- Angular JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.10/angular.min.js"></script>
+    <!-- Angular route -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>
+    <!-- My controller -->
+    <script src="./js/loginController.js"></script>
 
   </body>
 

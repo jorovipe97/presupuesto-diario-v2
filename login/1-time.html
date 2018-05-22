@@ -1,0 +1,25 @@
+<h1>Antes de empezar...</h1>
+<p class="mb-5">¿Durante cuantos dias a partir de hoy debes sobrevivir?</p>
+
+
+
+
+<p>
+	<a href="" ng-click="setNumOfDays(7)">
+		<img src="./../img/semanal.gif">
+	</a>
+
+	<a href="" ng-click="setNumOfDays(15)">
+		<img src="./../img/quincenal.gif">
+	</a>
+
+	<a href="" ng-click="setNumOfDays(31)">
+		<img src="./../img/mensual.gif">
+	</a>
+</p>
+
+<form ng-submit="submitForm()">
+	<input required class="w-20" type="number" name="" placeholder="El número de dias" class="form-control" ng-model="numOfDays">
+	<br><br>
+	<a class="btn btn-outline btn-xl" role="submit" ng-click="submitForm()">Siguiente</a>
+</form>
