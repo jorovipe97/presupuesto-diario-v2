@@ -1,0 +1,41 @@
+<h1 ng-init="init()">Antes de empezar...</h1>
+<p class="mb-5">¿Que gastos tienes?</p>
+<p>{{msg}}</p>
+
+<form ng-submit="addOutcome()">
+	<input required class="w-50" type="text" name="" placeholder="Nombre del gasto" class="form-control" ng-model="outcome.name">
+	<input required class="w-20" type="number" name="" placeholder="Cantidad" class="form-control" ng-model="outcome.ammount">
+	
+	<br>
+
+	<label class="checkbox">
+	  <input type="checkbox" ng-model="outcome.recurringRevenue">
+	  Gasto mensual
+	  <span class="checkmark"></span>
+	</label>
+
+	<br>
+
+	<a href="" class="btn" ng-click="addOutcome()"><h1><i class="fa fa-check-square-o"></i></h1></a>	
+</form>
+<br>
+<table class="table">
+	<thead>
+		<tr>
+		  <th scope="col">Nombre</th>
+		  <th scope="col">Cantidad</th>
+		  <th scope="col">¿Gasto fijo?</th>
+		  <th scope="col">Ajustes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="_outcome in outcomeList track by $index">
+			<td><span ng-bind="_outcome.name"></span></td>
+      <td><span ng-bind="_outcome.ammount | currency : '$ ' : 0"></span></td>
+      <td><span ng-bind="(_outcome.recurringRevenue) ? 'Si' : 'No'"></span></td>
+      <td><a href="" ng-click="removeOutcome($index)" class="btn">Remove</a></td>
+		</tr>
+	</tbody>
+</table>
+
+<a ng-href="{{url}}" class="btn btn-outline btn-xl" role="submit" ng-click="submitForm()">Finalizar</a>

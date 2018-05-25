@@ -1,0 +1,45 @@
+{{init()}}
+
+<h1>Antes de empezar...</h1>
+<p class="mb-5">¿Con cuánto dinero debes sobrevivir?</p>
+
+<form ng-submit="addIncome()">
+	<input required class="w-50" type="text" name="" placeholder="Nombre del ingreso" class="form-control" ng-model="income.name">
+	<input required class="w-20" type="number" name="" placeholder="Cantidad" class="form-control" ng-model="income.ammount">
+
+	<br>
+
+	<label class="checkbox">
+	  <input type="checkbox" ng-model="income.recurringRevenue">
+	  Ingreso mensual
+	  <span class="checkmark"></span>
+	</label>
+	
+	<br>
+
+	<a href="" class="btn" ng-click="addIncome()"><h1><i class="fa fa-check-square-o"></i></h1></a>	
+</form>
+<br>
+<table class="table">
+	<thead>
+		<tr>
+		  <th scope="col">Nombre</th>
+		  <th scope="col">Cantidad</th>
+		  <th scope="col">¿Ingreso fijo?</th>
+		  <th scope="col">Ajustes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="_income in incomeList track by $index">
+			<td><span ng-bind="_income.name"></span></td>
+      <td><span ng-bind="_income.ammount | currency : '$ ' : 0"></span></td>
+      <td><span ng-bind="(_income.recurringRevenue)? 'Si' : 'No'"></span></td>
+      <td><a href="" ng-click="removeIncome($index)" class="btn">Remove</a></td>
+		</tr>
+	</tbody>
+</table>
+
+<a ng-href="{{url}}" class="btn btn-outline btn-xl" role="submit" ng-click="submitForm()">Siguiente</a>
+<span>
+	
+</span>

@@ -1,0 +1,117 @@
+<span ng-bind="{{initPresupuestoCtrl()}}"></span>
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="#/!">Presupuesto</a>
+  </li>
+  <li class="breadcrumb-item active">Mi presupuesto diario</li>
+</ol>
+
+<!-- Content -->
+<div class="row">
+	<div class="col-sm-12 text-center">
+    <h4>Si al fin de mes llegar quieres</h4>
+		<h1>Gastar máximo <span ng-bind="presupuestoDiario | currency : '$ ' : 0"></span> hoy debes</h1>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-2 text-center"></div>
+	<div class="col-sm-8 text-center">
+		<canvas id="chart-canvas"></canvas>
+	</div>	
+</div>
+<br>
+<br>
+<div class="row">
+	<div class="col-sm-12 col-md-6 text-right">
+		<a href="" class="btn btn-danger btn-xl" data-toggle="modal" data-target="#gastoModal">Agregar Gasto</a>
+	</div>
+
+	<div class="col-sm-12 col-md-6 text-left" data-toggle="modal" data-target="#ingresoModal">
+		<a href="" class="btn btn-success btn-xl">Agregar Ingreso</a>
+	</div>
+</div>
+
+<div class="row" style="margin-bottom: 4%">
+</div>
+
+<!-- Gasto Modal-->
+<div class="modal fade" id="gastoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Gasto</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+  		
+  		<form ng-submit="addOutcome(); updatePresupuestoDiario()">
+			<input required class="w-50" type="text" name="" placeholder="Nombre del gasto" class="form-control" ng-model="outcome.name">
+			<input required class="w-20" type="number" name="" placeholder="Cantidad" class="form-control" ng-model="outcome.ammount">
+			
+			<br>
+			<br>
+
+			<label class="checkbox">
+			  <input type="checkbox" ng-model="outcome.recurringRevenue">
+			  Gasto mensual
+			  <span class="checkmark"></span>
+			</label>
+		</form>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+        <a class="btn btn-danger" ng-click="addOutcome(); updatePresupuestoDiario()" href="" data-dismiss="modal">Agregar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ingreso Modal-->
+<div class="modal fade" id="ingresoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Ingreso</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	
+      	<form ng-submit="addIncome(); updatePresupuestoDiario()">
+			<input required class="w-50" type="text" name="" placeholder="Nombre del ingreso" class="form-control" ng-model="income.name">
+			<input required class="w-20" type="number" name="" placeholder="Cantidad" class="form-control" ng-model="income.ammount">
+
+			<br>
+			<br>
+
+			<label class="checkbox">
+			  <input type="checkbox" ng-model="income.recurringRevenue">
+			  Ingreso mensual
+			  <span class="checkmark"></span>
+			</label>
+		</form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+        <a class="btn btn-success" ng-click="addIncome(); updatePresupuestoDiario()" href="" data-dismiss="modal">Agregar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+
+<p>{{getPresupuestoDiario() | currency : '$ ' : 0}}</p>
+<p>{{getTotalIncome() | currency : '$ ' : 0}}</p>
+<p>{{getTotalOutcome() | currency : '$ ' : 0}}</p>
+<p>{{daysBetween(getStartDate())}}</p>
+<p>Start date: {{getStartDate()}}</p>
+<p>Today's date: {{getTodaysDate()}}</p> -->
